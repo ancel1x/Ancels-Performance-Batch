@@ -1,6 +1,6 @@
 @echo off
 
-:: Version #
+:: Version
 Set Version=1.0
 
 :: Enable Delayed Expansion
