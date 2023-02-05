@@ -16,7 +16,7 @@ The author of this file cannot be held responsible or liable for any damages tha
 # ❓ How to Use?
 1. Go to [Releases](https://github.com/ancel1x/Ancels-Performance-Batch/releases/tag/Latest)
 2. Download **"AncelsPerformanceBatch.bat"**
-3. Run AncelsPerformanceBatch.bat as Administrator
+3. Run "AncelsPerformanceBatch.bat" as Administrator
 4. Press the Number # for the Optimization you want, and click Enter
 
 # 🤝 Community
