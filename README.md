@@ -20,7 +20,7 @@ The author of this file cannot be held responsible or liable for any damages tha
 4. Press the Number # for the Optimization you want, and click Enter
 
 # 🤝 Community
-Feel free to join Ancel's Optimization Hub. The server was designed for those who are interested in tweaking, or are already tweakers. Here you can learn how to optimize your PC in many ways. Everything in the server is **free**. Nothing is paid or gatekeeped.
+Feel free to join [Ancel's Optimization Hub](https://discord.gg/ZhZ8eJZc42). The server was designed for those who are interested in tweaking, or are already tweakers. Here you can learn how to optimize your PC in many ways. Everything in the server is **free**. Nothing is paid or gatekeeped.
 
 # 📜 License
 Ancel's Performance Batch is Licensed under the [MIT License](https://opensource.org/licenses/MIT). For more information, visit [LICENSE](https://github.com/ancel1x/Ancels-Performance-Batch/blob/main/LICENSE)
