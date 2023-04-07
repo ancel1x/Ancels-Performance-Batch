@@ -268,7 +268,7 @@ timeout /t 1 /nobreak > NUL
 
 :: Enable HAGS
 echo Enabling Hardware-Accelerated Gpu Scheduling
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchedMode" /t REG_DWORD /d "2" /f >> APB_Log.txt
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d "2" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
 :: Enable Distribute Timers
