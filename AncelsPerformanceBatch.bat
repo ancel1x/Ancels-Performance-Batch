@@ -147,6 +147,8 @@ bcdedit /set disableelamdrivers Yes >> APB_Log.txt
 bcdedit /set pae ForceEnable >> APB_Log.txt
 bcdedit /set nx optout >> APB_Log.txt
 bcdedit /set highestmode Yes >> APB_Log.txt
+bcdedit /set linearaddress57 OptOut >> APB_Log.txt
+bcdedit /set increaseuserva 268435328 >> APB_Log.txt
 bcdedit /set forcefipscrypto No >> APB_Log.txt
 bcdedit /set noumex Yes >> APB_Log.txt
 bcdedit /set uselegacyapicmode No >> APB_Log.txt
