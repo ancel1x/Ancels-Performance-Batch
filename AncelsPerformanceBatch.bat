@@ -1,10 +1,13 @@
 @echo off
 
 :: Version #
-Set Version=3.0
+Set Version=4.0
 
 :: Enable Delayed Expansion
 setlocal enabledelayedexpansion
+
+:: Set Powershell Execution Policy to Unrestricted
+powershell "Set-ExecutionPolicy Unrestricted"
 
 :: Batch File Log
 echo Ancel's Performance Batch Log >APB_Log.txt
@@ -328,7 +331,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 timeout /t 1 /nobreak > NUL
 
 :: Timestamp
-echo Setting Time Stamp
+echo Setting Time Stamp Interval
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability" /v "TimeStampInterval" /t REG_DWORD /d "1" /f >> APB_Log.txt
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability" /v "IoPriority" /t REG_DWORD /d "3" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
@@ -342,6 +345,137 @@ timeout /t 1 /nobreak > NUL
 :: System Responsiveness
 echo Setting System Responsiveness
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "10" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Windows Remediation
+echo Disabling Windows Remediation
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RemediationRequired" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Windows Tips
+echo Disabling Windows Tips
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SoftLandingEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Windows Spotlight
+echo Disabling Windows Spotlight
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RotatingLockScreenOverlayEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Shared Experiences
+echo Disabling Shared Experiences
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CDP" /v "CdpSessionUserAuthzPolicy" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CDP" /v "NearShareChannelUserAuthzPolicy" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Stop Explorer from Showing Frequent/Recent Files
+echo Disabling Frequent/Recent Files
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "ShowFrequent" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "ShowRecent" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "TelemetrySalt" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoRecentDocsHistory" /t REG_DWORD /d "1" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Tailored Experiences
+echo Disabling Tailored Experiences
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v "TailoredExperiencesWithDiagnosticDataEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Search History Logging
+echo Disabling Search History Logging
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "HistoryViewEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Device History
+echo Disabling Bing Search
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "DeviceHistoryEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Bing Search
+echo Disabling Bing Search
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Notifications
+echo Disabling Notifications
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" /v "ToastEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings" /v "NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings" /v "NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\QuietHours" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.AutoPlay" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.LowDisk" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.Print.Notification" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.WiFiNetworkManager" /v "Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Windows Privacy Settings
+echo Setting Windows Privacy Settings
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\cellularData" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\cellularData\Microsoft.Win32WebViewHost_cw5n1h2txyewy" /v "Value" /t REG_SZ /d "Allow" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\gazeInput" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location\Microsoft.Win32WebViewHost_cw5n1h2txyewy" /v "Value" /t REG_SZ /d "Prompt" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone" /v "Value" /t REG_SZ /d "Allow" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone\Microsoft.Win32WebViewHost_cw5n1h2txyewy" /v "Value" /t REG_SZ /d "Prompt" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation\Microsoft.AccountsControl_cw5n1h2txyewy" /v "Value" /t REG_SZ /d "Prompt" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary" /v "Value" /t REG_SZ /d "Deny" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam" /v "Value" /t REG_SZ /d "Allow" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\Microsoft.Win32WebViewHost_cw5n1h2txyewy" /v "Value" /t REG_SZ /d "Allow" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Stop Windows from Reinstalling Preinstalled apps
+echo Stopping Windows from Reinstalling Preinstalled apps
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "OemPreInstalledAppsEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContentEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEverEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Suggestions at Start
+echo Disabling Windows Suggestions
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338388Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-314559Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-280815Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-314563Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338393Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353694Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353696Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-310093Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-202914Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338387Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338389Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353698Enabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable Startup Apps
+echo Disabling Startup Apps
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "Discord" /t REG_BINARY /d "0300000066AF9C7C5A46D901" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "Synapse3" /t REG_BINARY /d "030000007DC437B0EA9FD901" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "Spotify" /t REG_BINARY /d "0300000070E93D7B5A46D901" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "EpicGamesLauncher" /t REG_BINARY /d "03000000F51C70A77A48D901" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "RiotClient" /t REG_BINARY /d "03000000A0EA598A88B2D901" /f >> APB_Log.txt
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run" /v "Steam" /t REG_BINARY /d "03000000E7766B83316FD901" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
 :: Disable Microsoft Setting Synchronization
@@ -367,8 +501,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting" /v "DoReport"
 reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v "Disabled" /t REG_DWORD /d "1" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
-:: IO Prioritization & Boost
-echo Setting IO Priorities
+:: Setting Service Priorities & Boost
+echo Setting Service Priorities
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\I/O System" /v "PassiveIntRealTimeWorkerPriority" /t REG_DWORD /d "18" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\KernelVelocity" /v "DisableFGBoostDecay" /t REG_DWORD /d "1" /f >> APB_Log.txt
 
@@ -494,7 +628,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power" /v "Monito
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power" /v "TransitionLatency" /t REG_DWORD /d "1" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
-:: Resource Policy Tweaks
+:: Resource Policy Values
 echo Setting Resource Policy Store Values
 reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\CPU\HardCap0" /v "CapPercentage" /t REG_DWORD /d "0" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\CPU\HardCap0" /v "SchedulingType" /t REG_DWORD /d "0" /f >> APB_Log.txt
@@ -542,6 +676,17 @@ reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\Importance\VeryLo
 reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\IO\NoCap" /v "IOBandwidth" /t REG_DWORD /d "0" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\Memory\NoCap" /v "CommitLimit" /t REG_DWORD /d "4294967295" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\ResourcePolicyStore\ResourceSets\Policies\Memory\NoCap" /v "CommitTarget" /t REG_DWORD /d "4294967295" /f >> APB_Log.txt
+timeout /t 1 /nobreak > NUL
+
+:: Disable P-States
+echo Disabling P-States
+for /f %%i in ('wmic path Win32_VideoController get PNPDeviceID^| findstr /L "PCI\VEN_"') do (
+	for /f "tokens=3" %%a in ('reg query "HKLM\SYSTEM\ControlSet001\Enum\%%i" /v "Driver"') do (
+		for /f %%i in ('echo %%a ^| findstr "{"') do (
+		     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\%%i" /v "DisableDynamicPstate" /t REG_DWORD /d "1" /f >> APB_Log.txt
+                   )
+                )
+             )        
 timeout /t 1 /nobreak > NUL
 
 
@@ -1340,7 +1485,7 @@ timeout /t 1 /nobreak > NUL
 
 :: Set Network Autotuning to Normal
 echo Setting Network AutoTuning to Normal
-netsh int tcp set global autotuninglevel=normal
+netsh int tcp set global autotuninglevel=disabled
 timeout /t 1 /nobreak > NUL
 
 :: Disable ECN
@@ -1547,6 +1692,7 @@ reg add "%%n" /v "NicAutoPowerSaver" /t REG_SZ /d "2" /f >> APB_Log.txt
 reg add "%%n" /v "PowerDownPll" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "PowerSavingMode" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "ReduceSpeedOnPowerDown" /t REG_SZ /d "0" /f >> APB_Log.txt
+reg add "%%n" /v "SmartPowerDownEnable" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "S5NicKeepOverrideMacAddrV2" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "S5WakeOnLan" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "ULPMode" /t REG_SZ /d "0" /f >> APB_Log.txt
@@ -1597,9 +1743,10 @@ timeout /t 1 /nobreak > NUL
 
 :: Remove Interrupt Delays
 echo Removing Interrupt Delays
-reg add "%%n" /v "RxAbsIntDelay" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "TxIntDelay" /t REG_SZ /d "0" /f >> APB_Log.txt
 reg add "%%n" /v "TxAbsIntDelay" /t REG_SZ /d "0" /f >> APB_Log.txt
+reg add "%%n" /v "RxIntDelay" /t REG_SZ /d "0" /f >> APB_Log.txt
+reg add "%%n" /v "RxAbsIntDelay" /t REG_SZ /d "0" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
 :: Remove Adapter Notification
@@ -1607,9 +1754,9 @@ echo Removing Adapter Notification Sending
 reg add "%%n" /v "FatChannelIntolerant" /t REG_SZ /d "0" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
-:: Enable Interrupt Moderation
-echo Enabling Interrupt Moderation
-reg add "%%n" /v "*InterruptModeration" /t REG_SZ /d "1" /f >> APB_Log.txt
+:: Disable Interrupt Moderation
+echo Disabling Interrupt Moderation
+reg add "%%n" /v "*InterruptModeration" /t REG_SZ /d "0" /f >> APB_Log.txt
 )
 
 goto CompletedNetworkOptimizations
@@ -1750,8 +1897,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\perceptionsimulation" /v "Start"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\StiSvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\OneSyncSvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\autotimesvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\autotimesvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\autotimesvc" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\edgeupdatem" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\MicrosoftEdgeElevationService" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
@@ -1917,7 +2062,7 @@ echo.
 echo                              %w%[%y% %c%%u%3%q%%t% %w%]%y% KBoost                            %w%[%y% %c%%u%4%q%%t% %w%]%y% Disable Devices
 echo.
 echo.
-echo                                                      %w%[%y% %c%%u%5%q%%t% %w%]%y% Menu
+echo                              %w%[%y% %c%%u%5%q%%t% %w%]%y% IoPagelockLimit                   %w%[%y% %c%%u%6%q%%t% %w%]%y% Menu
 set choice=
 set /p choice=
 if not '%choice%'=='' set choice=%choice:~0,1%
@@ -1925,7 +2070,8 @@ if '%choice%'=='1' goto DisableDrivers
 if '%choice%'=='2' goto PowerPlan
 if '%choice%'=='3' goto KBoost
 if '%choice%'=='4' goto DisableDevices
-if '%choice%'=='5' goto Menu
+if '%choice%'=='5' goto SetIOPageLockLimit
+if '%choice%'=='6' goto Menu
 
 :DisableDrivers
 cls
@@ -1968,10 +2114,25 @@ goto Other
 :PowerPlan
 cls
 echo Applying Ancels Power Plan
+:: Import Ancels Power Plan
 curl -g -k -L -# -o "C:\Ancels Power Plan.pow" "https://cdn.discordapp.com/attachments/1003668036345143376/1082001857322422373/Ancels_Power_Plan.pow" >> APB_Log.txt
-powercfg -import "C:\Ancels Power Plan.pow" >> APB_Log.txt
-cls
-echo Please Activate the Power Plan in Control Panel to Enable it
+powercfg -import "C:\Ancels Power Plan.pow" 11111111-1111-1111-1111-111111111111 >> APB_Log.txt
+powercfg -setactive 11111111-1111-1111-1111-111111111111 >> APB_Log.txt
+
+:: Delete Balanced Power Plan
+powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e >> APB_Log.txt
+
+:: Delete Power Saver Power Plan
+powercfg -delete a1841308-3541-4fab-bc81-f71556f20b4a >> APB_Log.txt
+
+:: Delete High Performance Power Plan
+powercfg -delete 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >> APB_Log.txt
+
+:: Delete Ultimate Performance Power Plan
+powercfg -delete e9a42b02-d5df-448d-aa00-03f14749eb61 >> APB_Log.txt
+
+:: Delete AMD Ryzen Balanced Power Plan
+powercfg -delete 9897998c-92de-4669-853f-b7cd3ecb2790 >> APB_Log.txt
 timeout /t 3 /nobreak > NUL
 
 goto Other
@@ -2088,6 +2249,68 @@ goto FinishedDevices
 cls
 echo Finished Disabling Devices
 timeout /t 5 /nobreak > NUL
+
+goto Other
+
+:SetIOPageLockLimit
+cls
+echo How much RAM do you have? 4 GB = 1  8 GB = 2  16 GB = 3  32 GB = 4  64 GB = 5
+set choice=
+set /p choice=
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto 4GBIOPageLockLimit
+if '%choice%'=='2' goto 8GBIOPageLockLimit
+if '%choice%'=='3' goto 16GBIOPageLockLimit
+if '%choice%'=='4' goto 32GBIOPageLockLimit
+if '%choice%'=='5' goto 64GBIOPageLockLimit
+
+:4GBIoPageLockLimit
+cls
+echo Setting IOPageLockLimit
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IOPageLockLimit" /t REG_DWORD /d "536870912" /f >> APB_Log.txt
+cls
+echo IOPageLockLimit Has Been Successfully Configured
+timeout /t 3 /nobreak > NUL
+
+goto Other
+
+:8GBIoPageLockLimit
+cls
+echo Setting IOPageLockLimit
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IOPageLockLimit" /t REG_DWORD /d "1073741824" /f >> APB_Log.txt
+cls
+echo IOPageLockLimit Has Been Successfully Configured
+timeout /t 3 /nobreak > NUL
+
+goto Other
+
+:16GBIoPageLockLimit
+cls
+echo Setting IOPageLockLimit
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IOPageLockLimit" /t REG_DWORD /d "2147483648" /f >> APB_Log.txt
+cls
+echo IOPageLockLimit Has Been Successfully Configured
+timeout /t 3 /nobreak > NUL
+
+goto Other
+
+:32GBIoPageLockLimit
+cls
+echo Setting IOPageLockLimit
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IOPageLockLimit" /t REG_DWORD /d "4294967296" /f >> APB_Log.txt
+cls
+echo IOPageLockLimit Has Been Successfully Configured
+timeout /t 3 /nobreak > NUL
+
+goto Other
+
+:64GBIoPageLockLimit
+cls
+echo Setting IOPageLockLimit
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "IOPageLockLimit" /t REG_DWORD /d "8589934592" /f >> APB_Log.txt
+cls
+echo IOPageLockLimit Has Been Successfully Configured
+timeout /t 3 /nobreak > NUL
 
 goto Other
 
