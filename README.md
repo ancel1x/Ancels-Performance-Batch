@@ -19,6 +19,8 @@ The author of this file cannot be held responsible or liable for any damages tha
 3. Run "AncelsPerformanceBatch.bat" as Administrator
 4. Press the Number # for the Optimization you want, and click Enter
 
+**Here is a video that shows you how to use this utility: https://youtu.be/YEwchUAryPU?si=tc_yh9p_U6NiJ0Vg**
+
 # 🤝 Community
 Feel free to join [Ancel's Optimization Hub](https://discord.gg/ZhZ8eJZc42). The server was designed for those who are interested in tweaking, or are already tweakers. Here you can learn how to optimize your PC in many ways. Everything in the server is **free**. Nothing is paid or gatekeeped.
 
