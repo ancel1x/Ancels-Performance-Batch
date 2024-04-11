@@ -9,7 +9,7 @@ Ancel's Performance Batch is an Open Source Tweaker that was designed to improve
 The author of this file cannot be held responsible or liable for any damages that may occur to your computer as a result of running this file. Use at your own risk.
 
 # 💻 Requirements
-- Windows 10
+- Windows 10 or 11
 - Internet Connection
 - Administrator Permissions
 
