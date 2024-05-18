@@ -409,7 +409,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "HistoryViewE
 timeout /t 1 /nobreak > NUL
 
 :: Disable Device History
-echo Disabling Bing Search
+echo Disabling Device History
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "DeviceHistoryEnabled" /t REG_DWORD /d "0" /f >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
