@@ -2157,7 +2157,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\tcpipreg" /v "Start" /t REG_DWOR
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\dam" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\wanarpv6" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\PEAUTH" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\QWAVEdrv" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\cdrom" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\fileinfo" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\FileCrypt" /v "Start" /t REG_DWORD /d "4" /f >> APB_Log.txt
@@ -2265,7 +2264,6 @@ DevManView.exe /disable "Intel SMBus"
 DevManView.exe /disable "SM Bus Controller"
 DevManView.exe /disable "Amdlog"
 DevManView.exe /disable "AMD PSP"
-DevManView.exe /disable "System Speaker"
 DevManView.exe /disable "Composite Bus Enumerator"
 DevManView.exe /disable "Microsoft Virtual Drive Enumerator"
 DevManView.exe /disable "Microsoft Hyper-V Virtualization Infrastructure Driver"
