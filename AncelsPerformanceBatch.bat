@@ -1881,6 +1881,9 @@ echo                          %w%[%y% %c%%u%3%q%%t% %w%]%y% %c%Disable Unnecessa
 echo.
 echo.
 echo                          %w%[%y% %c%%u%5%q%%t% %w%]%y% %c%PC Cleaner%t%                                  %w%[%y% %c%%u%6%q%%t% %w%]%y% %c%Go Back to Menu%t%                                                          
+echo.
+echo.
+echo                          %w%[%y% %c%%u%7%q%%t% %w%]%y% %c%Disable Recall (Windows 11 24H2)%t%
 set choice=
 set /p choice=
 if not '%choice%'=='' set choice=%choice:~0,1%
@@ -1889,7 +1892,8 @@ if '%choice%'=='2' goto DisableCortana
 if '%choice%'=='3' goto UnnecessaryServicesDisable  
 if '%choice%'=='4' goto DisableOneDrive
 if '%choice%'=='5' goto PCCleaner
-if '%choice%'=='6' goto Menu                  
+if '%choice%'=='6' goto Menu
+if '%choice%' == '7' goto DisableRecall
 
 :PowerShellPackages
 cls
@@ -1919,6 +1923,15 @@ PowerShell -Command "Get-AppxPackage -allusers *WindowsFeedbackHub* | Remove-App
 PowerShell -Command "Get-AppxPackage -allusers *WindowsSoundRecorder* | Remove-AppxPackage" >> APB_Log.txt
 PowerShell -Command "Get-AppxPackage -allusers *windowscommunicationsapps* | Remove-AppxPackage" >> APB_Log.txt
 PowerShell -Command "Get-AppxPackage -allusers *zune* | Remove-AppxPackage" >> APB_Log.txt
+timeout /t 5 /nobreak > NUL
+
+goto DebloatWindows
+
+:DisableRecall
+cls
+echo Disabling Recall
+DISM /Online /Disable-Feature /FeatureName:"Recall"
+
 timeout /t 5 /nobreak > NUL
 
 goto DebloatWindows
