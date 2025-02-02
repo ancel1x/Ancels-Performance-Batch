@@ -178,7 +178,7 @@ cls
 :: BCD Tweaks
 echo Applying BCD Tweaks
 bcdedit /set useplatformclock No >> APB_Log.txt
-bcdedit /seplatformtick No >> APB_Log.txt
+bcdedit /set useplatformtick No >> APB_Log.txt
 bcdedit /set disabledynamictick Yes >> APB_Log.txt
 timeout /t 1 /nobreak > NUL
 
