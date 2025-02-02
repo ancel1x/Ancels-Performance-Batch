@@ -136,7 +136,7 @@ cls
 :: BCD Tweaks
 echo Applying BCD Tweaks
 bcdedit /set useplatformclock No >> APB_Log.txt
-bcdedit /set platformtick No >> APB_Log.txt
+bcdedit /set useplatformtick No >> APB_Log.txt
 bcdedit /set disabledynamictick Yes >> APB_Log.txt
 bcdedit /set tscsyncpolicy Enhanced >> APB_Log.txt
 bcdedit /set firstmegabytepolicy UseAll >> APB_Log.txt
