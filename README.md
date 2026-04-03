@@ -1,3 +1,12 @@
+# ⚠️ Deprecated Notice
+This batch file is now **deprecated**.
+
+While it may still run, it contains **outdated values and registry keys** that may no longer exist or apply to modern versions of Windows. Running it could potentially **break certain system functionality** or cause unintended issues.
+
+We strongly recommend using our **new and actively maintained optimization program**, available here:  
+👉 https://www.anceltweaks.com/
+
+
 # 👏 About
 Ancel's Performance Batch is an Open Source Tweaker that was designed to improve computer performance and latency. The Tweaker is interactive so it allows the user to optimize their pc however they please. It is important to note that the results may vary depending on the system's configuration.
 
