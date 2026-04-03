@@ -4,7 +4,7 @@ This batch file is now **deprecated**.
 While it may still run, it contains **outdated values and registry keys** that may no longer exist or apply to modern versions of Windows. Running it could potentially **break certain system functionality** or cause unintended issues.
 
 We strongly recommend using our **new and actively maintained optimization program**, available here:  
-👉 https://www.anceltweaks.com/
+👉 https://www.anceltweaks.com
 
 
 # 👏 About
